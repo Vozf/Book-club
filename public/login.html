@@ -2,26 +2,33 @@
 
 <html>
 
-	<head>
-		<title>Clementine.js - The elegant and lightweight full stack JavaScript boilerplate.</title>
-		
-		<link href="/public/css/main.css" rel="stylesheet" type="text/css">
-	</head>
+<head>
+	<title>Clementine.js - The elegant and lightweight full stack JavaScript boilerplate.</title>
 
-	<body>
-		<div class="container">	
-			<div class="login">
-				<img src="/public/img/clementine_150.png" />
-				<br />
-				<p class="clementine-text">Clementine.js</p>
-				<a href="/auth/github">
-					<div class="btn" id="login-btn">
-						<img src="/public/img/github_32px.png" alt="github logo" />
-						<p>LOGIN WITH GITHUB</p>
-					</div>
-				</a>
-			</div>
+	<link href="/public/css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<div class="container">
+		<div class="login">
+			<img src="/public/img/clementine_150.png" />
+			<br />
+			<p class="clementine-text">Clementine.js</p>
+			<form action="/login" method="post">
+				<div>
+					<label>Username:</label>
+					<input type="text" name="username" />
+				</div>
+				<div>
+					<label>Password:</label>
+					<input type="password" name="password" />
+				</div>
+				<div>
+					<input type="submit" value="Log In" />
+				</div>
+			</form>
 		</div>
-	</body>
+	</div>
+</body>
 
 </html>

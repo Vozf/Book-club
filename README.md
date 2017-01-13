@@ -1,6 +1,10 @@
+#Book Club on clementinejs.Login based on passport-local. Page examples can be found here http://codepen.io/Vozman/pen/pRydBa
+[(https://cs540107.vk.me/c604416/v604416977/5052a/MgBijyZfq44.jpg)]
+
 # Clementine.js FCC Boilerplate
 
-[![Join the chat at https://gitter.im/johnstonbl01/clementinejs](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/johnstonbl01/clementinejs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+[![Join the chat at https://gitter.im/johnstonbl01/clementinejs](https://cs540107.vk.me/c604416/v604416977/50552/m4LU7Xuk7JU.jpg)](https://gitter.im/johnstonbl01/clementinejs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## Overview
 

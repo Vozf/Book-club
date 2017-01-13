@@ -1,0 +1,9 @@
+header.text-center.container-fluid
+  a(href='/')
+    span.banner Book Club
+  if isAuthenticated
+    a.btn.mybut(href='/logout') Logout
+    a.btn.mybut(href='/profile') Profile
+  else
+    a.btn.mybut(href='/login') Login
+    a.btn.mybut(href='/register') Sign up

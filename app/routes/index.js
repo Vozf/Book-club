@@ -16,13 +16,29 @@ module.exports = function (app, passport) {
 	var clickHandler = new ClickHandler();
 
 	app.route('/')
-		.get(isLoggedIn, function (req, res) {
-			res.sendFile(path + '/public/index.html');
-		});
+		.get(clickHandler.renderMain)
+		.post(isLoggedIn,clickHandler.initTrade)
+		.delete(isLoggedIn,clickHandler.declineTrade);
+
 
 	app.route('/login')
 		.get(function (req, res) {
-			res.sendFile(path + '/public/login.html');
+			
+			res.render("login",{isAuthenticated:req.isAuthenticated()});
+		})
+		.post(passport.authenticate('local'),function(req, res) {
+			console.log(req.body.username);
+    // If this function gets called, authentication was successful.
+    // `req.user` contains the authenticated user.
+    res.redirect('/');
+  });
+  
+  	app.route('/register')
+		.get(function (req, res) {
+			res.render("register",{isAuthenticated:req.isAuthenticated()});
+		})
+		.post(clickHandler.signUp,passport.authenticate('local'),function(req,res){
+			res.redirect('/');
 		});
 
 	app.route('/logout')
@@ -32,14 +48,12 @@ module.exports = function (app, passport) {
 		});
 
 	app.route('/profile')
-		.get(isLoggedIn, function (req, res) {
-			res.sendFile(path + '/public/profile.html');
-		});
+		.get(isLoggedIn, clickHandler.renderProfile)
+		.post(isLoggedIn,clickHandler.addBook);
 
-	app.route('/api/:id')
-		.get(isLoggedIn, function (req, res) {
-			res.json(req.user.github);
-		});
+	app.route('/api/trade')
+		.post(isLoggedIn,clickHandler.acceptTrade)
+		.delete(isLoggedIn,clickHandler.declineTrade);
 
 	app.route('/auth/github')
 		.get(passport.authenticate('github'));
@@ -51,7 +65,7 @@ module.exports = function (app, passport) {
 		}));
 
 	app.route('/api/:id/clicks')
-		.get(isLoggedIn, clickHandler.getClicks)
+		.get(clickHandler.getBook)
 		.post(isLoggedIn, clickHandler.addClick)
 		.delete(isLoggedIn, clickHandler.resetClicks);
 };

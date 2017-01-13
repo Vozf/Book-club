@@ -1,0 +1,47 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    title Book-trading-login
+    link(rel='stylesheet prefetch', href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css')
+    link(rel='stylesheet prefetch', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/public/views/css/style.css')
+    script(type="text/javascript", src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js")
+    script(type="text/javascript", src="controllers/trade.js")
+  body
+    include header.pug
+    .main.text-center.container-fluid
+      if err
+        h2 Didn't find such book.Try again.
+        
+      a#inbut.btn.btn-info  Incoming trade request
+      a#outbut.btn.btn-success  Outcoming trade request
+      #inli.requests
+        ul
+          each req in requests.ins
+            li
+              span.req #{req.title}
+              span.icons
+                a(href='#')
+                  i.acc.fa.fa-check(aria-hidden='true', id=req.title)
+                a(href='#')
+                  i.dec.fa.fa-times(aria-hidden='true', id=req.title)
+      #outli.requests
+        ul
+          each req in requests.out
+            li
+              span.req #{req.title}
+              span.icons
+                a(href='#')
+                  i.selfDec.fa.fa-times(aria-hidden='true', id=req.title)
+      form(action='/profile', method='post')
+        div
+          label Add new Book:
+          input.form-control(type='text', required='', name='bookname')
+        div
+          input.btn.btn-primary(type='submit', value='Add book')
+      h2  My Books
+      .list
+        each book in books
+          .entry
+            img.image(src= book.url)

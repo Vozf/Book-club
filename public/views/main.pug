@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    title Book-trading-login
+    link(rel='stylesheet prefetch', href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css')
+    link(rel='stylesheet prefetch', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/public/views/css/style.css')
+    script(type="text/javascript", src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js")
+    script(type="text/javascript", src="controllers/trade.js")
+  body
+    include header.pug
+    .main.text-center.container-fluid
+      h2 All books
+      .list
+        each book in books
+          .entry
+            img.image(src= book.url)
+            a(href='#')
+              i.init.fa.fa-exchange.ic(aria-hidden='true', id=book.title)
