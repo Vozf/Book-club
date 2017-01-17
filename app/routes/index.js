@@ -26,7 +26,7 @@ module.exports = function (app, passport) {
 			
 			res.render("login",{isAuthenticated:req.isAuthenticated()});
 		})
-		.post(passport.authenticate('local'),function(req, res) {
+		.post(passport.authenticate('local',{ successRedirect: '/',failureRedirect: '/login' }),function(req, res) {
 			console.log(req.body.username);
     // If this function gets called, authentication was successful.
     // `req.user` contains the authenticated user.
